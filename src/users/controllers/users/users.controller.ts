@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Request, Response } from 'express';
 
 @Controller('users')
 export class UsersController {
@@ -13,5 +14,10 @@ export class UsersController {
       { userName: 'Abhiram', post: '4bh1ram@gmail.com' },
       { userName: 'Abhiram', post: '4bh1ram@gmail.com' },
     ];
+  }
+  @Post('create')
+  createUser(@Req() request: Request, @Res() response: Response) {
+    console.log(request.body);
+    response.send('created');
   }
 }
